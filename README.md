@@ -28,7 +28,7 @@ A full-stack AI-powered project task manager with **Google OAuth**, **AI integra
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
 - [Deployment](#deployment)
-- [What Makes This Resume-Strong](#what-makes-this-resume-strong)
+- [Summary](#summary)
 
 ---
 
@@ -400,20 +400,9 @@ The `build.js` script injects the key at build time.
 
 ---
 
-## ✅ What Makes This Resume-Strong
+## 📌 Summary
 
-1. **Google OAuth integration** — Real-world OAuth 2.0 flow with Supabase
-2. **AI integration** — Google Gemini 2.0 Flash API for task breakdown and suggestions
-3. **PostgreSQL Row-Level Security** — Complex RLS policy design avoiding infinite recursion between `projects` and `project_members`
-4. **SECURITY DEFINER functions** — PostgreSQL functions that selectively bypass RLS for specific operations
-5. **Team collaboration** — Role-based invites, activity log, notifications (complete multi-user system)
-6. **File attachments** — Drag-and-drop upload, Supabase Storage, download/delete
-7. **CSV export** — Excel-compatible formatting with UTF-8 BOM and text-mode dates
-8. **Due date warnings** — Visual overdue badges with day count
-9. **Dark mode + glassmorphism** — Polished, modern UI
-10. **Production deployment** — Live on Netlify with automated build and env var injection
-11. **SPA router** — Custom hash-based client-side routing
-12. **Comprehensive testing** — Functional, non-functional, and UAT documented
+TaskPilot AI is a solo-built, full-stack project task manager that combines AI assistance, team collaboration, and real-world security patterns. Key highlights include **Google OAuth** authentication, **Google Gemini** AI integration for task breakdowns, **PostgreSQL Row-Level Security** with custom **SECURITY DEFINER** functions to avoid cross-table recursion, role-based team invites with activity logging and notifications, file attachments via Supabase Storage, CSV export with Excel-compatible formatting, and automated due-date warnings. The app features a custom hash-based SPA router, dark mode with glassmorphism UI, and is deployed live on Netlify with environment variable injection for API keys.
 
 ---
 
