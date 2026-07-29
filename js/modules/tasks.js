@@ -20,9 +20,14 @@ const Tasks = {
     }));
   },
 
+  _parseLocalDate(dateStr) {
+    const [y, m, d] = dateStr.split('-').map(Number);
+    return new Date(y, m - 1, d);
+  },
+
   isOverdue(task) {
     if (!task.due_date || task.status === 'done') return false;
-    const due = new Date(task.due_date);
+    const due = this._parseLocalDate(task.due_date);
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     return due < today;
@@ -30,7 +35,7 @@ const Tasks = {
 
   daysOverdue(task) {
     if (!this.isOverdue(task)) return 0;
-    const due = new Date(task.due_date);
+    const due = this._parseLocalDate(task.due_date);
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     return Math.floor((today - due) / (1000 * 60 * 60 * 24));
