@@ -285,7 +285,7 @@ const Tasks = {
         </div>
       `;
 
-      document.getElementById('backToProject').onclick = () => router.navigate(`projects/${projectId}`);
+      document.getElementById('backToProject').onclick = () => Projects.showDetail(projectId);
       document.getElementById('editTaskBtn').onclick = () => this.showEditForm(projectId, taskId, task);
       document.getElementById('deleteTaskBtn').onclick = () => this.confirmDelete(projectId, taskId);
       document.getElementById('postCommentBtn').onclick = () => this.addComment(projectId, taskId);
@@ -410,7 +410,7 @@ const Tasks = {
         await Activity.log(projectId, 'task_deleted', { task_title: task?.title });
         closeModal();
         showToast('Task deleted.', 'info');
-        router.navigate(`projects/${projectId}`);
+        Projects.showDetail(projectId);
       } catch (err) {
         showToast('Failed to delete task.', 'error');
       }
