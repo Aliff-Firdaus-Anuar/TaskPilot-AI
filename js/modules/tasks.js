@@ -306,7 +306,9 @@ const Tasks = {
     const btn = document.getElementById('postCommentBtn');
     btn.disabled = true;
     try {
-      await sb.from('task_comments').insert({ task_id: taskId, user_id: Auth.currentUser.id, content });
+      const userId = Auth.currentUser?.id || (await sb.auth.getSession()).data?.session?.user?.id;
+      if (!userId) throw new Error('Not authenticated');
+      await sb.from('task_comments').insert({ task_id: taskId, user_id: userId, content });
       await Activity.log(projectId, 'comment_added', { task_id: taskId, comment: content.substring(0, 100) });
       input.value = '';
       showToast('Comment posted!', 'success');
@@ -466,9 +468,12 @@ const Tasks = {
         const { error: uploadErr } = await sb.storage.from('task-files').upload(storagePath, file);
         if (uploadErr) throw uploadErr;
 
+        const userId = Auth.currentUser?.id || (await sb.auth.getSession()).data?.session?.user?.id;
+        if (!userId) throw new Error('Not authenticated');
+
         await sb.from('task_attachments').insert({
           task_id: taskId,
-          user_id: Auth.currentUser.id,
+          user_id: userId,
           file_name: file.name,
           file_size: file.size,
           file_type: file.type,
